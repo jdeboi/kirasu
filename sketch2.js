@@ -1,6 +1,9 @@
 
 function setup() {
-
+  if (windowWidth < 675) {
+    // $("#logo").css('left', '30px');
+    // $("#soundIcon").css("padding-right", "10px");
+  }
 }
 
 function draw() {

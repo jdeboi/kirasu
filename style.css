@@ -50,16 +50,12 @@ canvas {
   float: none;
 }
 .navbar-toggle {
-  display: block;
+  display: inline;
 }
 .navbar-collapse.collapse {
   display: none!important;
   width: 150px;
   float: right;
-}
-
-@media (min-width: 768px).navbar-collapse.collapse {
-    width: 100%;
 }
 
 .navbar-nav {
@@ -72,11 +68,11 @@ canvas {
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: white;
+  color: white;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
-    color: #9d9d9d;
+  color: #9d9d9d;
 }
 
 .navbar-collapse.collapse.in{
@@ -89,8 +85,8 @@ canvas {
 }
 
 .navbar-inverse .navbar-toggle {
-    border-color: #fff;
-    background: rgba(0, 0, 0, 0.3);
+  border-color: #fff;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
@@ -98,10 +94,10 @@ canvas {
   font-family: 'Quicksand', sans-serif;
 }
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: transparent;
+  border-color: transparent;
 }
 
-a#logo {
+a#homePageLogo, a#logo {
   position: fixed;
   top:30px;
   left:50px;
@@ -114,15 +110,15 @@ a#logo {
   display: inline;
 }
 
-#logo svg {
+#logo svg, #homePageLogo svg {
   width:224px;
   height:107px;
 }
 
-#logo svg g {
+#logo svg g, #homePageLogo svg g {
   transform: scale(.08);
 }
-#logo svg path {
+#logo svg path, #homePageLogo svg path {
   fill:white;
 
 }
@@ -171,4 +167,30 @@ nav {
   height:180px;
   top:0px;
   background-color: black;
+}
+
+@media (max-width: 768px) {
+  #socials {
+    display: none;
+  }
+  .navbar-collapse.collapse {
+    width: 100%;
+  }
+
+  #homePageLogo svg g {
+    /* CSS that should be displayed if width is equal to or less than 675px goes here */
+    transform: scale(.03);
+  }
+
+  a#homePageLogo {
+    left:30px;
+  }
+
+  a#logo {
+    left:30px;
+  }
+
+  #socials {
+    display: none;
+  }
 }

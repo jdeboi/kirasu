@@ -1,10 +1,3 @@
-$('#about').click(function(event){
-  event.stopPropagation();
-});
-$('#contact').click(function(event){
-  event.stopPropagation();
-});
-
 var backgroundImg, island, keyImg, fire, eyeImg, eyeLeft, eyeRight;
 var factor = 1;
 var eyeOpen = true;
@@ -511,15 +504,4 @@ function windowResized() {
   //lock.y -= dy;
   resizeCanvas(windowWidth, windowHeight);
 
-  if (width < 500) {
-    d3.select("#socials").style("display", "none");
-    // d3.select("#logo svg g").style("transform", "scale(" +  .08* width/500 + ")");
-    // d3.select("#logo svg").style("width", width/500*224 + "px");
-  }
-  else {
-    d3.select("#socials").style("display", "inline");
-    // d3.select("#logo svg g").style("transform", "scale(" +  .08 + ")");
-    // d3.select("#logo svg").style("width", "224px");
-    // d3.select("#logo svg").style("height", "107px");
-  }
 }
