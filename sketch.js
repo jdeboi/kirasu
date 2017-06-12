@@ -69,7 +69,7 @@ function draw() {
   if (lock.overEye) {
 
     for (var i = 1; i < 10; i++) {
-      stroke(width*.7, width, width, width*.1);
+      stroke(width*.70, width, width, width*.1);
       fill(width*.7, width, width, width/i*.1);
       ellipse(lock.x+lockImg.width/2, lock.y+lockImg.height/2, i*10+5);
     }
