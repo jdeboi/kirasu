@@ -54,7 +54,14 @@ canvas {
 }
 .navbar-collapse.collapse {
   display: none!important;
+  width: 150px;
+  float: right;
 }
+
+@media (min-width: 768px).navbar-collapse.collapse {
+    width: 100%;
+}
+
 .navbar-nav {
   float: none!important;
 }

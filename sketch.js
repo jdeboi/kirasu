@@ -56,18 +56,18 @@ function setup() {
 function draw() {
   background(backgroundImg);
   stars.star();
+  var h = 10*sin(millis()/500)+10;
   var xp = width/2-island.width/2;
-  image(island, xp, 0);
+  image(island, xp, h);
   if (!eye.open && millis() - eye.time > 100) {
     eye.open = true;
   }
   if (eye.open) {
-    if (mouseX < width/3) image(eyeLeft, eye.x, eye.y);
-    else if (mouseX > 2*width/3) image(eyeRight, eye.x, eye.y);
-    else image(eyeImg, eye.x, eye.y);
+    if (mouseX < width/3) image(eyeLeft, eye.x, eye.y+h);
+    else if (mouseX > 2*width/3) image(eyeRight, eye.x, eye.y+h);
+    else image(eyeImg, eye.x, eye.y+h);
   }
   if (lock.overEye) {
-
     for (var i = 1; i < 10; i++) {
       stroke(width*.70, width, width, width*.1);
       fill(width*.7, width, width, width/i*.1);
@@ -82,7 +82,8 @@ function draw() {
       ellipse(lock.x+lockImg.width/2, lock.y+lockImg.height/2, i*10+5);
     }
   }
-  image(lockImg, lock.x, lock.y);
+  if (lock.locked) image(lockImg, lock.x, lock.y);
+  else image(lockImg, lock.x, lock.y+h);
 }
 
 function mousePressed() {
@@ -90,6 +91,10 @@ function mousePressed() {
     lock.locked = true;
     lock.offSetX = mouseX - lock.x;
     lock.offSetY = mouseY - lock.y;
+  }
+  else {
+    var navMain = $(".navbar-collapse"); // avoid dependency on #id
+    navMain.collapse('hide');
   }
 }
 
