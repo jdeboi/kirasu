@@ -501,9 +501,9 @@ function windowResized() {
   var dy = (height - windowHeight)/2;
   stars.resize();
   eye.x -= dx;
-  eye.y -= dy;
+  //eye.y -= dy;
   lock.x -= dx;
-  lock.y -= dy;
+  //lock.y -= dy;
   resizeCanvas(windowWidth, windowHeight);
 
   if (width < 500) {
