@@ -67,11 +67,19 @@ function draw() {
     else image(eyeImg, eye.x, eye.y);
   }
   if (lock.overEye) {
-    noStroke();
 
     for (var i = 1; i < 10; i++) {
-      fill(width, width/i*.1);
-      ellipse(mouseX, mouseY, i*10+40);
+      stroke(width*.7, width, width, width*.1);
+      fill(width*.7, width, width, width/i*.1);
+      ellipse(lock.x+lockImg.width/2, lock.y+lockImg.height/2, i*10+5);
+    }
+  }
+  else if (mouseX > lock.x && mouseX< lock.x + lockImg.width && mouseY > lock.y && mouseY < lock.y + lockImg.height) {
+
+    for (var i = 1; i < 10; i++) {
+      stroke(i*10, width, width, width*.2);
+      fill(i*10, width, width, width/i*.1);
+      ellipse(lock.x+lockImg.width/2, lock.y+lockImg.height/2, i*10+5);
     }
   }
   image(lockImg, lock.x, lock.y);
