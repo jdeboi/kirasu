@@ -6,7 +6,7 @@ var stars = [];
 var lock, eye;
 
 var rotX, rotY;
-var sky;
+var sky, constellation;
 
 function preload() {
   backgroundImg = loadImage("assets/skydress_stars.png");
@@ -28,10 +28,13 @@ function setup() {
 
 
   sky = new SkySphere(backgroundImg);
+  //innerSky = sky = new SkySphere(backgroundImg);
+  constellation = new Constellation(30, 30);
 }
 
 function draw() {
   sky.render();
+  constellation.render();
 }
 
 function mousePressed() {
@@ -432,7 +435,7 @@ function SkySphere(skyImg) {
       rotateY(mouseX * 0.01);
     }
     texture(this.img);
-    sphere(windowWidth);
+    sphere(windowWidth/2.5);
   }
 }
 
@@ -487,5 +490,32 @@ function skyBox(skyImgs) {
     texture(skyImgs[5]);
     box(windowWidth,1, 0);
     pop();
+  }
+}
+
+
+function Constellation(theta, phi) {
+  this.theta = theta;
+  this.phi = phi;
+  this.render = function() {
+    var r = windowWidth/2.5;
+
+    for(var i = 0; i < 10; i+=10) {
+
+
+      push();
+
+      translate(0, 0, r-100);
+      rotateX(radians(this.phi+i));
+      //rotateY(radians(this.theta+i));
+
+      fill(i*width/10, width, width);
+      stroke(width);
+      ellipse(0, 0, 20);
+      //line(0, 0, 50, 0);
+      //ellipse(50, 0, 50);
+      pop();
+    }
+
   }
 }
