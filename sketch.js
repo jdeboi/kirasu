@@ -503,5 +503,4 @@ function windowResized() {
   lock.x -= dx;
   //lock.y -= dy;
   resizeCanvas(windowWidth, windowHeight);
-
 }
