@@ -178,6 +178,14 @@ nav {
   height:50px;
 }
 
+.audioBtn h3 {
+  position: fixed;
+  top:60px;
+  left:290px;
+  width:50px;
+  height:50px;
+}
+
 @media (max-width: 768px) {
   #socials {
     display: none;
@@ -212,4 +220,18 @@ nav {
     width:50px;
     height:50px;
   }
+
+  .audioBtn h3 {
+    position: fixed;
+    top:auto;
+    bottom:50px;
+    right:40px;
+    left:auto;
+    width:50px;
+    height:50px;
+  }
+}
+
+.navbarBlk {
+  background-color: black;
 }

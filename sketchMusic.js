@@ -18,7 +18,6 @@ var button;
 var mouseClickTime = 0;
 var audio;
 var audioReady = false;
-var play, stop;
 
 function preload() {
   backgroundImg = loadImage("assets/skydress_stars.png");
@@ -26,13 +25,13 @@ function preload() {
 }
 
 function setup() {
+  // if (windowWidth < 1600 && windowWidth > 768) createCanvas(1600, windowHeight, WEBGL);
+  // else
   createCanvas(windowWidth, windowHeight, WEBGL);
   ellipseMode(CENTER);
   colorMode(HSB, width);
 
   button = new PlayButton();
-  play = loadImage("assets/play.png");
-  stop = loadImage("assets/pause.png");
 
   stars = new Flock();
   // Add an initial set of boids into the system
@@ -48,11 +47,13 @@ function setup() {
 }
 
 function draw() {
-  sky.render();
-  constellation.render();
+
 
   //button.isMouseOver();
   button.display();
+  sky.render();
+  constellation.render();
+
 }
 
 function mousePressed() {
@@ -441,20 +442,37 @@ function SkySphere(skyImg) {
   this.img = skyImg;
   this.render = function() {
     push();
-    if (mouseX === 0 && mouseY === 0) {
-      rotateZ(radians(180));
-      rotateX(-windowHeight/2 * 0.01);
-      rotateY(Math.PI)
-      rotateY(windowWidth/2 * 0.01);
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      // is mobile..
+      if (rotationX === 0 && rotationY === 0) {
+        rotateZ(radians(180));
+        rotateX(-windowHeight/2 * 0.01);
+        rotateY(Math.PI)
+        rotateY(windowWidth/2 * 0.01);
+      }
+      else {
+        rotateZ(radians(180));
+        rotateX(-rotationY * 0.01);
+        rotateY(Math.PI)
+        rotateY(rotationX * 0.01);
+      }
     }
     else {
-      rotateZ(radians(180));
-      rotateX(-mouseY * 0.01);
-      rotateY(Math.PI)
-      rotateY(mouseX * 0.01);
+      if (mouseX === 0 && mouseY === 0) {
+        rotateZ(radians(180));
+        rotateX(-windowHeight/2 * 0.01);
+        rotateY(Math.PI)
+        rotateY(windowWidth/2 * 0.01);
+      }
+      else {
+        rotateZ(radians(180));
+        rotateX(-mouseY * 0.01);
+        rotateY(Math.PI)
+        rotateY(mouseX * 0.01);
+      }
     }
     texture(this.img);
-    sphere(windowWidth/2.5);
+    sphere(1800/2.5);
     pop();
   }
 

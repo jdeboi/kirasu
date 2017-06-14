@@ -12,10 +12,10 @@
   <link rel="icon" href="../../favicon.ico">
 
   <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="libraries/d3.v3.js" type="text/javascript"></script>
-  <script src="libraries/p5.js" type="text/javascript"></script>
-  <script src="libraries/p5.dom.js" type="text/javascript"></script>
-  <script src="libraries/p5.sound.js" type="text/javascript"></script>
+  <script src="../libraries/d3.v3.js" type="text/javascript"></script>
+  <script src="../libraries/p5.js" type="text/javascript"></script>
+  <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+  <script src="../libraries/p5.sound.js" type="text/javascript"></script>
   <!-- <script src="libraries/p5.play.js" type="text/javascript"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r62/three.min.js" type="text/javascript"></script>
@@ -25,13 +25,14 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
   <!-- Bootstrap Core -->
-  <script src="js/jquery-2.2.4.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="../js/jquery-2.2.4.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="musicstyle.css">
 
 </head>
 
@@ -58,15 +59,15 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <li><a href="mailing.html">MAILING</a></li>
-        <li><a href="#">MUSIC</a></li>
+        <li><a href="../about.html">ABOUT</a></li>
+        <li><a href="../contact.html">CONTACT</a></li>
+        <li><a href="../mailing.html">MAILING</a></li>
+        <li><a href="../music.html">MUSIC</a></li>
       </ul>
     </div>
   </nav>
 
-  <a id="logo" href="index.html">
+  <a id="logo" href="../index.html">
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
@@ -133,12 +134,45 @@ fit-margin-bottom="0" />
 </svg>
 
 </a>
+
+<!-- <nav class="navbarBlk navbar navbar-inverse bg-inverse navbar-fixed-bottom">
+  <div class="navbar-header">
+    <div id="socials">
+      <a id="soundIcon" class="navIcon navbar-right" href="https://soundcloud.com">
+        <button type="button" class="btn navbar-btn">
+          <i  class="fa fa-soundcloud white" aria-hidden="true"></i>
+        </button>
+      </a>
+      <a id="fbIcon" class="navIcon navbar-right" href="https://soundcloud.com">
+        <button type="button" class="btn navbar-btn">
+          <i  class="fa fa-2x fa-facebook white" aria-hidden="true"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="../about.html">ABOUT</a></li>
+      <li><a href="../contact.html">CONTACT</a></li>
+      <li><a href="../mailing.html">MAILING</a></li>
+      <li><a href="../music.html">MUSIC</a></li>
+    </ul>
+  </div>
+</nav> -->
+<div id="otherPosts">
+  <div id="previousPost">
+    <h3>Previous</h3>
+  </div>
+  <div id="nextPost">
+  </div>
+</div>
 <audio id="myAudio"></audio>
 <div class="audioBtn">
-  <img id="playAudio" src="assets/play.png" onclick="toggleSong()" class="hidden" />
-  <img id="stopAudio" src="assets/pause.png" onclick="toggleSong()" class="hidden" />
+  <h3>Now Playing: "Song for M"</h3>
+  <img id="playAudio" src="../assets/play.png" onclick="toggleSong()" class="hidden" />
+  <img id="stopAudio" src="../assets/pause.png" onclick="toggleSong()" class="hidden" />
 </div>
-<script src="sketchButterfly.js" type="text/javascript"></script>
+<script src="sketchCloud.js" type="text/javascript"></script>
 
 </body>
 

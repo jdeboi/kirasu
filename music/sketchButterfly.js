@@ -6,7 +6,7 @@ var stars = [];
 var lock, eye;
 
 var rotX, rotY;
-var sky, constellation;
+var butterfly;
 
 var spectrum;
 var song;
@@ -18,21 +18,18 @@ var button;
 var mouseClickTime = 0;
 var audio;
 var audioReady = false;
-var play, stop;
+
 
 function preload() {
-  backgroundImg = loadImage("assets/skydress_stars.png");
-  //backgroundImg2 = loadImage("assets/skydress_sphere.png");
+  butterfly = loadImage("assets/");
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(windowWidth, windowHeight);
   ellipseMode(CENTER);
   colorMode(HSB, width);
 
   button = new PlayButton();
-  play = loadImage("assets/play.png");
-  stop = loadImage("assets/pause.png");
 
   stars = new Flock();
   // Add an initial set of boids into the system
@@ -40,18 +37,10 @@ function setup() {
     var b = new Boid(random(width),random(height), i);
     stars.addBoid(b);
   }
-
-
-  sky = new SkySphere(backgroundImg);
-  //innerSky = sky = new SkySphere(backgroundImg);
-  constellation = new Constellation(30, 30);
 }
 
 function draw() {
-  sky.render();
-  constellation.render();
 
-  //button.isMouseOver();
   button.display();
 }
 
@@ -458,88 +447,6 @@ function SkySphere(skyImg) {
     pop();
   }
 
-}
-
-function skyBox(skyImgs) {
-  this.render = function() {
-    rotateX(mouseY * 0.01);
-    rotateY(-mouseX * 0.01);
-
-    push();
-    translate(0, windowWidth/2, 0);
-    texture(skyImgs[0]);
-    box(windowWidth, 1, 0);
-    pop();
-
-    // top
-    push();
-    translate(0, -windowWidth/2, 0);
-    texture(skyImgs[1]);
-    box(windowWidth,1, 0);
-    pop();
-
-    // front
-    push();
-    rotateX(radians(90))
-    translate(0, windowWidth/2, 0);
-    texture(skyImgs[2]);
-    box(windowWidth,1, 0);
-    pop();
-
-    // back
-    push();
-    rotateX(radians(90))
-    translate(0, -windowWidth/2, 0);
-    texture(skyImgs[3]);
-    box(windowWidth,1, 0);
-    pop();
-
-    // right
-    push();
-    rotateX(radians(90))
-    rotateZ(radians(90));
-    translate(0, -windowWidth/2, 0);
-    texture(skyImgs[4]);
-    box(windowWidth,1, 0);
-    pop();
-
-    // right
-    push();
-    rotateX(radians(90))
-    rotateZ(radians(-90));
-    translate(0, -windowWidth/2, 0);
-    texture(skyImgs[5]);
-    box(windowWidth,1, 0);
-    pop();
-  }
-}
-
-
-function Constellation(theta, phi) {
-  this.theta = theta;
-  this.phi = phi;
-  this.render = function() {
-    var r = windowWidth/2.5;
-
-    for(var i = 0; i < 100; i+=10) {
-
-
-      push();
-
-      translate(0, 0, r-100);
-      //rotateX(radians(this.phi));
-      //rotateY(radians(this.theta+i));
-
-      fill(i*width/10, width, width);
-      stroke(width);
-      rect(0, 0, 40, 40);
-      //ellipse(0, 0, 20);
-      //line(0, 0, 50, 0);
-      //ellipse(50, 0, 50);
-      pop();
-    }
-
-  }
 }
 
 window.onload = function() {
