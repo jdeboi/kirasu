@@ -80,12 +80,12 @@ function PlayButton(w, h) {
       stroke(this.w);
     }
     if (!isPlaying) {
-      d3.select("#playAudio").attr("class","showing");
-      d3.select("#stopAudio").attr("class","hidden");
+      document.getElementById("playAudio").attr("class","showing");
+      document.getElementById("stopAudio").attr("class","hidden");
     }
     else {
-      d3.select("#playAudio").attr("class","hidden");
-      d3.select("#stopAudio").attr("class","showing");
+      document.getElementById("playAudio").attr("class","hidden");
+      document.getElementById("stopAudio").attr("class","showing");
     }
   }
 

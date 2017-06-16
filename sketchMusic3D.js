@@ -51,7 +51,7 @@ function init () {
   domEl.appendChild(renderer.domElement);
 
   addLight();
-  custom();
+  //custom();
   addText();
   animate();
 
@@ -89,7 +89,8 @@ function addText() {
 
     var geometry = new THREE.TextGeometry('Kirasu', {
       font: font,
-      size: 30
+      size: 50,
+      height:2
     });
 
     var textMaterial = new THREE.MeshPhongMaterial({
@@ -98,8 +99,8 @@ function addText() {
     });
 
     var mesh = new THREE.Mesh(geometry, textMaterial);
-    mesh.position.z = -sphereR+15;
-    mesh.rotateY = THREE.Math.degToRad(5);
+    mesh.position.set(230,300,-sphereR*.8);
+    mesh.rotation.y = THREE.Math.degToRad(-35);
     scene.add(mesh);
     targetList.push(mesh);
 
