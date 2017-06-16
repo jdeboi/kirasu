@@ -7,16 +7,22 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-p {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 130%;
+#container {
+  position:fixed;
+  height:100%;
+  width:100%;
 }
 
-#container {
+/*#container {
   position: absolute;
   padding:50px;
   top:140px;
   font-family: 'Quicksand', sans-serif;
+}*/
+
+p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 130%;
 }
 
 .container {
@@ -37,6 +43,7 @@ canvas {
   margin: auto;
   position:fixed;
   top:0px;
+  width:100%;
   z-index:-100;
 }
 

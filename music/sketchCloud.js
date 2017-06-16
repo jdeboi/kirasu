@@ -31,7 +31,7 @@ function preload() {
 }
 
 function setup() {
-  if (windowWidth < 1200 && windowWidth > 768) createCanvas(1800, windowHeight);
+  if (windowWidth < 1200 && windowWidth > 768) createCanvas(1200, windowHeight);
   else createCanvas(windowWidth, windowHeight);
   ellipseMode(CENTER);
   colorMode(HSB, width);
@@ -453,7 +453,7 @@ function SkySphere(skyImg) {
       rotateY(mouseX * 0.01);
     }
     texture(this.img);
-    sphere(1600/2.5);
+    sphere(windowWidth/2.5);
     pop();
   }
 
