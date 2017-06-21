@@ -6,8 +6,11 @@ var orchid, moth, whale;
 var constellations = [];
 var selected = -1;
 var mobileView = {x:0, y:0};
-var maxWidth = 1300;
-var maxHeight = 800;
+var minWidth = 1300;
+var minHeight = 800;
+var maxTransX = 1300;
+var maxTransY = 800;
+var zoom = false;
 
 function preload() {
   backgroundImg = loadImage("assets/concrete.jpg");
@@ -22,8 +25,11 @@ function preload() {
 function setup() {
   var w = windowWidth;
   var h = windowHeight;
-  if (windowWidth < 1300) w = 1300;
-  if (windowHeight < 800) h = 800;
+  if (windowWidth < minWidth) {
+    zoom = true;
+    w = 1300;
+  }
+  if (windowHeight < minHeight) h = 800;
   createCanvas(w, h);
   colorMode(HSB, width);
   angleMode(DEGREES);
@@ -42,10 +48,13 @@ function setup() {
 
 function draw() {
   imageMode(CORNER);
-  background(backgroundImg, width/2, height/2);
-  stars.star();
+  if(zoom) background(backgroundImg);
+  else image(backgroundImg, 0, 0, minWidth, minHeight);
 
   imageMode(CENTER);
+  stars.star();
+
+
   checkMobile();
   for (var i = 0; i < constellations.length; i++) {
     constellations[i].display();
@@ -199,7 +208,13 @@ function checkMobile() {
   // is mobile?
   //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
+  // rotation X
+  // 90 upright
+  // 0 flat on back
 
-  console.log(rotationY + " " + rotationX);
+  // rotationY
+
+
+  console.log("z: " + rotationZ + " " + rotationX);
   //}
 }
