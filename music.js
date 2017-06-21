@@ -165,11 +165,11 @@ function getSelected() {
 }
 
 function mouseClicked() {
-  if (getSelected() == 0) window.location.href='music/deltawaves.html';
+  if (getSelected() == 0) window.location.href='music/delta-waves.html';
   else if (getSelected() == 1) window.location.href='music/cycles.html';
   else if (getSelected() == 2) window.location.href='music/kirasu.html';
-  else if (getSelected() == 3) window.location.href='music/songform.html';
-  else if (getSelected() == 4) window.location.href='music/riteofspring.html';
+  else if (getSelected() == 3) window.location.href='music/song-for-m.html';
+  else if (getSelected() == 4) window.location.href='music/rite-of-spring.html';
 }
 
 function setupConstellations() {
