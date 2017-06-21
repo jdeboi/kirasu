@@ -76,22 +76,24 @@ function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
   // }
 
   this.getTint = function () {
-    var d = sqrt((mouseX - this.x)*(mouseX - this.x) + (mouseY - this.y)*(mouseY - this.y));
-    // tint(width, map(d, 0, width/2, width*.3, width));
     var t = 0;
-    if (d > this.rad*3) t = .15;
+    var d = this.getDistance();
+    if (d > this.rad*3) t = .08;
     else if (d < this.rad) {
-      t = 1;
+      t = .8;
     }
-    else t = map(d, this.rad, this.rad*3, .8, .15);
+    else t = map(d, this.rad, this.rad*3, .8, .08);
     tint(255, t*255);
     //ellipse(this.x, this.y, d);
     //fill(0, width, width);
   }
   this.mouseOver = function () {
-    var d = sqrt((mouseX - this.x)*(mouseX - this.x) + (mouseY - this.y)*(mouseY - this.y));
-    if (d < this.rad) return true;
+    if (this.getDistance() < this.rad*3) return true;
     return false;
+  }
+  this.getDistance = function () {
+    var d = sqrt((mouseX - this.x)*(mouseX - this.x) + (mouseY - this.y)*(mouseY - this.y));
+    return d;
   }
   this.display = function() {
 
