@@ -5,6 +5,7 @@ var constellationImgs = [];
 var orchid, moth, whale;
 var constellations = [];
 var selected = -1;
+var mobileView = {x:0, y:0};
 
 function preload() {
   backgroundImg = loadImage("assets/concrete.jpg");
@@ -24,7 +25,6 @@ function setup() {
   createCanvas(w, h);
   colorMode(HSB, width);
   angleMode(DEGREES);
-  imageMode(CENTER);
   ellipseMode(CENTER);
 
   stars = new Flock();
@@ -41,18 +41,13 @@ function setup() {
 function draw() {
   imageMode(CORNER);
   background(backgroundImg, width/2, height/2);
+  stars.star();
+  
   imageMode(CENTER);
+  checkMobile();
   for (var i = 0; i < constellations.length; i++) {
     constellations[i].display();
   }
-  // push();
-  // rotate(15);
-  // translate(0, 250);
-  // scale(.3);
-  // image(moth, 0, 0);
-  // pop();
-
-  stars.star();
 }
 
 function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
@@ -101,28 +96,28 @@ function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
 
     push();
 
-      translate(this.x, this.y);
+    translate(this.x, this.y);
 
-      push();
-        rotate(this.rot);
-        tint(255, 255);
-        this.getTint();
-        image(constellationImgs[this.id], 0, 0);
-      pop();
-      textSize(30);
-      if (this.mouseOver()) {
-        fill(width);
-        stroke(width);
-      }
-      else {
-        fill(width, 50);
-        stroke(width, 50);
-      }
+    push();
+    rotate(this.rot);
+    tint(255, 255);
+    this.getTint();
+    image(constellationImgs[this.id], 0, 0);
+    pop();
+    textSize(30);
+    if (this.mouseOver()) {
+      fill(width);
+      stroke(width);
+    }
+    else {
+      fill(width, 50);
+      stroke(width, 50);
+    }
 
-      push();
-        //translate(this.tx, this.ty);
-        text(this.name, 0, 0);
-      pop();
+    push();
+    //translate(this.tx, this.ty);
+    text(this.name, 0, 0);
+    pop();
 
 
     this.drawStars();
@@ -195,5 +190,39 @@ function setupConstellations() {
 
   for (var i = 0; i < constellations.length; i++) {
     constellations[i].resizeImg();
+  }
+}
+
+function checkMobile() {
+  // is mobile?
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+    //////////////////////// check z (left right)
+    if ((rotationZ - pRotationZ > 0 && rotationZ - pRotationZ < 270)|| rotationZ - pRotationZ < -270) {
+      // rotateDirection = 'clockwise';
+      mobileView.x++;
+      if (mobileView.x > maxWidth) mobileView.x = maxWidth;
+    }
+    else if (rotationZ - pRotationZ < 0 || rotationZ - pRotationZ > 270){
+      // rotateDirection = 'counter-clockwise';
+      mobileView.x--;
+      if (mobileView.x < 0) mobileView.x = 0;
+    }
+
+    //////////////////////// check x (up down)
+    var rX = rotationX + 180;
+    var pRX = pRotationX + 180;
+
+    if ((rX - pRX > 0 && rX - pRX < 270)|| rX - pRX < -270){
+      //rotateDirection = 'clockwise';
+      mobileView.y++;
+      if (mobileView.y > maxHeight) mobileView.y = maxHeight;
+    }
+    else if (rX - pRX < 0 || rX - pRX > 270){
+      //rotateDirection = 'counter-clockwise';
+      mobileView.y--;
+      if (mobileView.y < 0) mobileView.y = 0;
+    }
+    translate(-mobileView.x, -mobileView.y);
   }
 }
