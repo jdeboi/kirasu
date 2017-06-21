@@ -226,6 +226,6 @@ function checkMobile() {
       if (mobileView.y < 0) mobileView.y = 0;
     }
     //translate(-mobileView.x, -mobileView.y);
-    text(mobileView.x + " " + mobileView.y, 200, 0);
+    console.log(mobileView.x ,mobileView.y);
   //}
 }
