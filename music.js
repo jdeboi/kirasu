@@ -199,33 +199,7 @@ function checkMobile() {
   // is mobile?
   //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
-    //////////////////////// check z (left right)
-    if ((rotationZ - pRotationZ > 0 && rotationZ - pRotationZ < 270)|| rotationZ - pRotationZ < -270) {
-      // rotateDirection = 'clockwise';
-      mobileView.x++;
-      if (mobileView.x > maxWidth) mobileView.x = maxWidth;
-    }
-    else if (rotationZ - pRotationZ < 0 || rotationZ - pRotationZ > 270){
-      // rotateDirection = 'counter-clockwise';
-      mobileView.x--;
-      if (mobileView.x < 0) mobileView.x = 0;
-    }
 
-    //////////////////////// check x (up down)
-    var rX = rotationX + 180;
-    var pRX = pRotationX + 180;
-
-    if ((rX - pRX > 0 && rX - pRX < 270)|| rX - pRX < -270){
-      //rotateDirection = 'clockwise';
-      mobileView.y++;
-      if (mobileView.y > maxHeight) mobileView.y = maxHeight;
-    }
-    else if (rX - pRX < 0 || rX - pRX > 270){
-      //rotateDirection = 'counter-clockwise';
-      mobileView.y--;
-      if (mobileView.y < 0) mobileView.y = 0;
-    }
-    //translate(-mobileView.x, -mobileView.y);
-    console.log(mobileView.x ,mobileView.y);
+  console.log(rotateY + rotateX);
   //}
 }
