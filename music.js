@@ -214,7 +214,7 @@ function checkMobile() {
     var rx = 0;
     if (rotationX < 30) rx = 30;
     else if (rotationX > 140) rx = 140;
-    translate(0, map(rx, 30, 140, 0, maxTransY));
+    translate(0, map(rx, 30, 140, -maxTransY/2, maxTransY/2));
 
     // rotationY
 
