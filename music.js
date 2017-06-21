@@ -6,6 +6,8 @@ var orchid, moth, whale;
 var constellations = [];
 var selected = -1;
 var mobileView = {x:0, y:0};
+var maxWidth = 1300;
+var maxHeight = 800;
 
 function preload() {
   backgroundImg = loadImage("assets/concrete.jpg");
@@ -195,7 +197,7 @@ function setupConstellations() {
 
 function checkMobile() {
   // is mobile?
-  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
     //////////////////////// check z (left right)
     if ((rotationZ - pRotationZ > 0 && rotationZ - pRotationZ < 270)|| rotationZ - pRotationZ < -270) {
@@ -225,5 +227,5 @@ function checkMobile() {
     }
     //translate(-mobileView.x, -mobileView.y);
     text(mobileView.x + " " + mobileView.y, 200, 0);
-  }
+  //}
 }
