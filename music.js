@@ -44,7 +44,7 @@ function draw() {
   stars.star();
 
   imageMode(CENTER);
-  //checkMobile();
+  checkMobile();
   for (var i = 0; i < constellations.length; i++) {
     constellations[i].display();
   }
@@ -223,6 +223,7 @@ function checkMobile() {
       mobileView.y--;
       if (mobileView.y < 0) mobileView.y = 0;
     }
-    translate(-mobileView.x, -mobileView.y);
+    //translate(-mobileView.x, -mobileView.y);
+    text(mobileView.x + " " + mobileView.y, 200, 0);
   }
 }
