@@ -1,3 +1,4 @@
+var mode = {flying: 0, home: 1, mouse:2, landed:3};
 
 function Flock() {
   // An array for all the boids
@@ -13,6 +14,12 @@ Flock.prototype.star = function() {
 Flock.prototype.bird = function() {
   for (var i = 0; i < this.boids.length; i++) {
     this.boids[i].bird(this.boids);  // Passing the entire list of boids to each boid individually
+  }
+}
+
+Flock.prototype.changeMode = function(m) {
+  for (var i = 0; i < this.boids.length; i++) {
+    this.boids[i].mode = m;  // Passing the entire list of boids to each boid individually
   }
 }
 
@@ -174,8 +181,9 @@ Boid.prototype.flyToMouse = function() {
 Boid.prototype.renderStar = function() {
   // Draw a triangle rotated in the direction of velocity
   if(this.isShowing) {
-    fill(width, width*.7);
-    stroke(width);
+    colorMode(HSB, 100);
+    fill(100, 70);
+    stroke(100);
 
     push();
     translate(this.position.x,this.position.y);
@@ -204,8 +212,9 @@ Boid.prototype.renderBird = function() {
 
   var theta = this.velocity.heading() + 90;
 
-  fill(width);
-  stroke(width);
+  colorMode(HSB, 100);
+  fill(100);
+  stroke(100);
 
   push();
   translate(this.position.x,this.position.y);
