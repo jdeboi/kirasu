@@ -35,27 +35,7 @@ function setup() {
   }
   textFont("Quicksand");
   // ---------------------- id, name, x, y, tx, ty, trot, rot, rad, sc
-  var x = width/2;
-  var y = height/2;
-
-  var points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[0] = new Constellation(0, "orchid", "Delta Waves", x, y+200, 220, 380, -5, 0, 50, .3, points);
-
-  points = [{x:-160, y:60},{x:0, y:-90}, {x:160, y:60}];
-  constellations[1] = new Constellation(1, "moth", "Cycles", 500, 300, 220, 300, -5, 15, 50, .3, points);
-
-  points = [{x:0, y:120},{x:-160, y:80}, {x:-260, y:-40}, {x:0, y:-10}, {x:160, y:60}, {x:260, y:10}, {x:280, y:-40}, {x:240, y:-60}, {x:160, y:60}];
-  constellations[2] = new Constellation(2, "whale", "Kirasu", x+250, y-200, 200, 270, -5, 0, 50, .35, points);
-
-  points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[3] = new Constellation(3, "handeye", "Song for M", x-450, y+160, 200, 270, -5, -65, 50, .3, points);
-
-  points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[4] = new Constellation(4, "moth", "Rite of Spring", x+410, y+200, 200, 270, -5, -25, 50, .3, points);
-
-  for (var i = 0; i < constellations.length; i++) {
-    constellations[i].resizeImg();
-  }
+  setupConstellations();
 }
 
 function draw() {
@@ -190,4 +170,28 @@ function mouseClicked() {
   else if (getSelected() == 2) window.location.href='music/kirasu.html';
   else if (getSelected() == 3) window.location.href='music/songform.html';
   else if (getSelected() == 4) window.location.href='music/riteofspring.html';
+}
+
+function setupConstellations() {
+  var x = width/2;
+  var y = height/2;
+
+  var points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
+  constellations[0] = new Constellation(0, "orchid", "Delta Waves", x, y+200, 220, 380, -5, 0, 50, .3, points);
+
+  points = [{x:-160, y:60},{x:0, y:-90}, {x:160, y:60}];
+  constellations[1] = new Constellation(1, "moth", "Cycles", 500, 300, 220, 300, -5, 15, 50, .3, points);
+
+  points = [{x:0, y:120},{x:-160, y:80}, {x:-260, y:-40}, {x:0, y:-10}, {x:160, y:60}, {x:260, y:10}, {x:280, y:-40}, {x:240, y:-60}, {x:160, y:60}];
+  constellations[2] = new Constellation(2, "whale", "Kirasu", x+250, y-200, 200, 270, -5, 0, 50, .35, points);
+
+  points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
+  constellations[3] = new Constellation(3, "handeye", "Song for M", x-450, y+160, 200, 270, -5, -65, 50, .3, points);
+
+  points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
+  constellations[4] = new Constellation(4, "moth", "Rite of Spring", x+410, y+200, 200, 270, -5, -25, 50, .3, points);
+
+  for (var i = 0; i < constellations.length; i++) {
+    constellations[i].resizeImg();
+  }
 }
