@@ -200,6 +200,6 @@ function checkMobile() {
   //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
 
-  console.log(rotateY + " " + rotateX);
+  console.log(rotationY + " " + rotationX);
   //}
 }
