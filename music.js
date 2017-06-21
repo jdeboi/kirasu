@@ -206,11 +206,15 @@ function setupConstellations() {
 
 function checkMobile() {
   // is mobile?
-  //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
   // rotation X
   // 90 upright
   // 0 flat on back
+  var rx = 0;
+  if (rotationX < 30) rx = 30;
+  else if (rotationX > 140) rx = 140;
+  translate(0, map(rx, 30, 140, 0, maxTransY));
 
   // rotationY
 
