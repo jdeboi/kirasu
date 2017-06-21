@@ -42,9 +42,9 @@ function draw() {
   imageMode(CORNER);
   background(backgroundImg, width/2, height/2);
   stars.star();
-  
+
   imageMode(CENTER);
-  checkMobile();
+  //checkMobile();
   for (var i = 0; i < constellations.length; i++) {
     constellations[i].display();
   }
