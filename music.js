@@ -27,9 +27,9 @@ function setup() {
   var h = windowHeight;
   if (windowWidth < minWidth) {
     zoom = true;
-    w = 1300;
+    w = minWidth;
   }
-  if (windowHeight < minHeight) h = 800;
+  if (windowHeight < minHeight) h = minHeight;
   createCanvas(w, h);
   colorMode(HSB, width);
   angleMode(DEGREES);
@@ -48,9 +48,8 @@ function setup() {
 
 function draw() {
   imageMode(CORNER);
-  if(zoom) background(backgroundImg);
-  else image(backgroundImg, 0, 0, minWidth, minHeight);
-
+  if(!zoom) background(backgroundImg);
+  else image(backgroundImg, 0, 0, width, height);
   imageMode(CENTER);
   stars.star();
 
