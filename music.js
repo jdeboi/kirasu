@@ -12,13 +12,31 @@ var maxTransX = 1300;
 var maxTransY = 800;
 var zoom = false;
 
+var constID = {
+  orchid: {
+    id: 0, song: "Cycles", url: "cycles.html"
+  },
+  moth: {
+    id:1, song: "Rite of Spring", url: "rite-of-spring.html"
+  },
+  whale: {
+    id: 2, song: "Kirasu", url: "kirasu.html"
+  },
+  handeye: {
+    id:3, song: "Delta Waves", url: "delta-waves.html"
+  },
+  bird: {
+    id:4, song: "Song for M", url:"song-for-m.html"
+  }
+};
+
 function preload() {
   backgroundImg = loadImage("assets/concrete.jpg");
-  constellationImgs[0] = loadImage("assets/constellations/orchid.png");
-  constellationImgs[1] = loadImage("assets/constellations/moth.png");
-  constellationImgs[2] = loadImage("assets/constellations/whale.png");
-  constellationImgs[3] = loadImage("assets/constellations/handeye.png");
-  constellationImgs[4] = loadImage("assets/constellations/moth.png");
+  constellationImgs[constID.orchid.id] = loadImage("assets/constellations/orchid.png");
+  constellationImgs[constID.moth.id] = loadImage("assets/constellations/moth.png");
+  constellationImgs[constID.whale.id] = loadImage("assets/constellations/whale.png");
+  constellationImgs[constID.handeye.id] = loadImage("assets/constellations/handeye.png");
+  constellationImgs[constID.bird.id] = loadImage("assets/constellations/moth.png");
   //fontReg = loadFont("");
 }
 
@@ -60,10 +78,10 @@ function draw() {
   }
 }
 
-function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
+function Constellation(id, song, url, x, y, tx, ty, trot, rot, rad, sc, points) {
   this.id = id;
-  this.name = name;
-  this.o = o;
+  this.song = song;
+  this.url = url;
   this.x = x;
   this.y = y;
   this.tx = tx;
@@ -126,7 +144,7 @@ function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
 
     push();
     //translate(this.tx, this.ty);
-    text(this.name, 0, 0);
+    text(this.song, 0, 0);
     pop();
 
 
@@ -162,21 +180,12 @@ function Constellation(id, o, name, x, y, tx, ty, trot, rot, rad, sc, points) {
   }
 }
 
-function getSelected() {
+function mouseClicked() {
   for (var i = 0; i < constellations.length; i++) {
     if (constellations[i].mouseOver()) {
-      return i;
+      window.location.href='music/'+constellations[i].url;
     }
   }
-  return -1;
-}
-
-function mouseClicked() {
-  if (getSelected() == 0) window.location.href='music/delta-waves.html';
-  else if (getSelected() == 1) window.location.href='music/cycles.html';
-  else if (getSelected() == 2) window.location.href='music/kirasu.html';
-  else if (getSelected() == 3) window.location.href='music/song-for-m.html';
-  else if (getSelected() == 4) window.location.href='music/rite-of-spring.html';
 }
 
 function setupConstellations() {
@@ -184,23 +193,23 @@ function setupConstellations() {
   var y = height/2;
 
   var points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[0] = new Constellation(0, "orchid", "Delta Waves", x, y+200, 220, 380, -5, 0, 50, .3, points);
+  constellations[0] = new Constellation(constID.orchid.id, constID.orchid.song, constID.orchid.url, x, y+200, 220, 380, -5, 0, 50, .3, points);
 
   points = [{x:-160, y:60},{x:0, y:-90}, {x:160, y:60}];
-  constellations[1] = new Constellation(1, "moth", "Cycles", 500, 300, 220, 300, -5, 15, 50, .3, points);
+  constellations[1] = new Constellation(constID.moth.id, constID.moth.song, constID.moth.url , 500, 300, 220, 300, -5, 15, 50, .3, points);
 
   points = [{x:0, y:120},{x:-160, y:80}, {x:-260, y:-40}, {x:0, y:-10}, {x:160, y:60}, {x:260, y:10}, {x:280, y:-40}, {x:240, y:-60}, {x:160, y:60}];
-  constellations[2] = new Constellation(2, "whale", "Kirasu", x+250, y-200, 200, 270, -5, 0, 50, .35, points);
+  constellations[2] = new Constellation(constID.whale.id, constID.whale.song, constID.whale.url, x+250, y-200, 200, 270, -5, 0, 50, .35, points);
 
   points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[3] = new Constellation(3, "handeye", "Song for M", x-450, y+160, 200, 270, -5, -65, 50, .3, points);
+  constellations[3] = new Constellation(constID.handeye.id, constID.handeye.song, constID.handeye.url,x-450, y+160, 200, 270, -5, -65, 50, .3, points);
 
   points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
-  constellations[4] = new Constellation(4, "moth", "Rite of Spring", x+410, y+200, 200, 270, -5, -25, 50, .3, points);
+  constellations[4] = new Constellation(constID.bird.id, constID.bird.song, constID.bird.url, x+410, y+200, 200, 270, -5, -25, 50, .3, points);
 
-  for (var i = 0; i < constellations.length; i++) {
-    constellations[i].resizeImg();
-  }
+  // for (var i = 0; i < constellations.length; i++) {
+  //   constellations[i].resizeImg();
+  // }
 }
 
 function checkMobile() {
