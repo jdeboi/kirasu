@@ -12,6 +12,10 @@ var maxTransX = 1300;
 var maxTransY = 800;
 var zoom = false;
 
+var song;
+var audio;
+var audioReady = false;
+
 var constID = {
   orchid: {
     id: 0, song: "Cycles", url: "cycles.html"
@@ -28,6 +32,15 @@ var constID = {
   bird: {
     id:4, song: "Song for M", url:"song-for-m.html"
   }
+};
+
+window.onload = function() {
+  audio = document.getElementById('myAudio');
+  audio.src="assets/constellation.mp3";
+  audio.setAttribute('preload', "none");
+  audio.loop = true;
+  audioReady = true;
+  audio.play();
 };
 
 function preload() {
@@ -207,9 +220,9 @@ function setupConstellations() {
   points = [{x:-160, y:60},{x:0, y:-90}, {x:140, y:50}, {x:0, y:90}];
   constellations[4] = new Constellation(constID.bird.id, constID.bird.song, constID.bird.url, x+410, y+200, 200, 270, -5, -25, 50, .3, points);
 
-  // for (var i = 0; i < constellations.length; i++) {
-  //   constellations[i].resizeImg();
-  // }
+  for (var i = 0; i < constellations.length; i++) {
+    constellations[i].resizeImg();
+  }
 }
 
 function checkMobile() {
