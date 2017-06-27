@@ -12,6 +12,14 @@ var cloudImg, cloud;
 var rainImgs = [];
 var raindrops = [];
 
+var thunder = false;
+var thundering = false;
+var lastThundering = 0;
+var lastThunder = 0;
+var thunderNum = 0;
+var ranTime = 0;
+var tTime = 20;
+
 
 function preload() {
   backgroundImg = loadImage("assets/backgroundCloud.png");
@@ -37,6 +45,11 @@ function setup() {
 
 function draw() {
   background(backgroundImg);
+  checkThunder();
+  if (!thunder) {
+    fill(0);
+    rect(0, 0, width, height);
+  }
   cloud.render();
 }
 
@@ -121,6 +134,43 @@ function Raindrop(cloudX, cloudY, cloudS) {
       if (this.y > windowHeight-30) {
         this.isFalling = false;
         this.y = this.startY;
+      }
+    }
+  }
+}
+
+function checkThunder() {
+  if (!thundering) {
+    if (millis() - lastThundering > 1000 + ranTime) {
+      thundering = true;
+      lastThundering = millis();
+    }
+  }
+  else if (thundering) {
+    if (!thunder) {
+      if (thunderNum == 0) {
+        thunder = true;
+        lastThunder = millis();
+        thunderNum++;
+        tTime += 50;
+      }
+      else if (millis() - lastThunder > 50) {
+        thunder = true;
+        lastThunder = millis();
+      }
+    }
+    else if (thunder) {
+      if (millis() - lastThunder > tTime) {
+        lastThunder = millis();
+        thunder = false;
+        thunderNum++;
+        if (thunderNum == 5) {
+          thundering = false;
+          thunderNum = 0;
+          tTime = 20;
+          lastThundering = millis();
+          ranTime = random(8000);
+        }
       }
     }
   }
